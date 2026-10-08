@@ -1,0 +1,29 @@
+# Environment & secret files
+.env
+.env.local
+.env.*.local
+*.env
+
+# Logs and cache
+storage/logs/*.log
+*.log
+
+# Dependencies
+vendor/
+node_modules/
+
+# XAMPP default web files
+/dashboard/
+/xampp/
+/webalizer/
+/img/
+/applications.html
+/bitnami.css
+/favicon.ico
+/index.php
+
+# OS and IDE files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,8 @@
+# Allow images and documents, deny executable scripts
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|pdf)$">
+    Require all granted
+</FilesMatch>
+
+<FilesMatch "\.(php|phtml|php3|php4|php5|php7|php8|phar|pl|py|cgi|sh|bat)$">
+    Require all denied
+</FilesMatch>

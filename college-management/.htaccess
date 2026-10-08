@@ -1,0 +1,20 @@
+RewriteEngine On
+
+# Pass Authorization header to PHP
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Route everything through the front controller
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Lock down sensitive folders from direct web access
+<IfModule mod_rewrite.c>
+  RewriteRule ^(config|core|middleware|repositories|services|controllers|api/controllers|database|storage/(?!uploads))/ - [F,L]
+</IfModule>
+
+# Never serve dotfiles
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
